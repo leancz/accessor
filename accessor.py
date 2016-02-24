@@ -1,3 +1,4 @@
+from __future__ import print_function
 import sys, os
 file = sys.argv[1]
 
@@ -22,8 +23,8 @@ word = ''
 for i in range(0, 52, 4):
     xored = ord(no_pass_42[i:i+2].decode("hex")) ^ ord(myfile_42[i/2])
     if add_salt: xored = xored ^ salt
-    print i, myfile_42[i:i+2], xored, chr(xored)
+    # print i, myfile_42[i:i+2], xored, chr(xored)
     word = word + chr(xored)
     add_salt = not add_salt
-print
-print word
+
+print(word)
