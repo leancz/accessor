@@ -1,10 +1,10 @@
 # accessor
-remember access db password
+remember ms access db password
 
 The inspiration for this prgram came from the web page:
   http://tutorialsto.com/database/access/crack-access-*.-mdb-all-current-versions-of-the-password.html
 
-The program takes one parameter, the name of an access database file and attempts to remind you of the
+The program takes one parameter, the name of an ms access database file and attempts to remind you of the
 password you forgot that is protecting the file.
 
 The password is hidden at position 0x42 in the file, and each character of the password occurs at every second
