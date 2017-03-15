@@ -1,5 +1,5 @@
-from __future__ import print_function
-import sys, os
+import sys
+import codecs
 file = sys.argv[1]
 
 # These magic strings were obtained from the web page
@@ -16,14 +16,13 @@ with open(file, 'rb') as f:
     f.seek(98) # x62 == 98
     myfile_62 = f.read(1)
 
-salt = ord(no_pass_62.decode("hex")) ^ ord(myfile_62)
+salt = ord(codecs.decode(no_pass_62, "hex")) ^ ord(myfile_62)
 
 add_salt = True
 word = ''
 for i in range(0, 52, 4):
-    xored = ord(no_pass_42[i:i+2].decode("hex")) ^ ord(myfile_42[i/2])
+    xored = ord(codecs.decode(no_pass_42[i:i+2], "hex")) ^ myfile_42[i//2]
     if add_salt: xored = xored ^ salt
-    # print i, myfile_42[i:i+2], xored, chr(xored)
     word = word + chr(xored)
     add_salt = not add_salt
 
